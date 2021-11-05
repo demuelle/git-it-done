@@ -40,11 +40,14 @@ var displayRepos = function(repos, searchTerm) {
         return;
     }
     repos.forEach(repo => {
-        var repoEl = document.createElement("div");
+        var repoName = `${repo.owner.login}/${repo.name}`
+
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
         
         var titleEl = document.createElement("span");
-        titleEl.textContent = `${repo.owner.login}/${repo.name}`;
+        titleEl.textContent = repoName;
 
         repoEl.appendChild(titleEl);
 
